@@ -1,0 +1,9 @@
+.flex-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.header-cont {
+  text-align: center;
+}
