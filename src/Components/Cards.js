@@ -7,7 +7,7 @@ import { Card } from "react-bootstrap";
 
 function Cards(props) {
     return (
-      <div>
+      <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12">
           <Card style={{ width: '18rem' }}>
            <Card.Img variant="top" src="holder.js/100px180" />
         <Card.Body>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Content from "./Content.js"
 import Cards from "./Cards.js"
+import ContentTwo from "./ContentTwo.js"
 import Header from "./Header.js"
 import "./Cards.css";
 
@@ -8,7 +9,7 @@ function Home() {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true); 
     const fetchApi = () => {
-        fetch("https://api.jsonbin.io/b/609aa766e0aabd6e191bce6c", {
+        fetch("https://api.jsonbin.io/b/609ac8db1a02f86e1f0998fa", {
             headers: {
             "secret-key": "$2b$10$mLJ/ZZQcwSmRR0.XSy4vTuc2xZY/pKBtWJyaneLlLfJTv8MIVx0xa"
             }
@@ -34,12 +35,17 @@ function Home() {
         <div className="flex-cards">
             {!loading ? (
                 news.map((news) => {
-                    return <Cards><Content key={news.id} news={news} /></Cards>
+                    return (
+                    <div>
+                            <Cards><Content key={news.id} news={news} /></Cards>
+                            <Cards><ContentTwo key={news.id} news={news} /></Cards>
+                        </div>
+                    )
                 })
             ) : (
                 <p>loading..</p>
             )}
-            </div>
+            </div> 
             </React.Fragment>
     );
 }
