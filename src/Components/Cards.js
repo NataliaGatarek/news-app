@@ -2,9 +2,6 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card } from "react-bootstrap";
 
-
-
-
 function Cards(props) {
     return (
       <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12">
