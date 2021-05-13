@@ -4,17 +4,15 @@ import Cards from "./Cards.js"
 import ContentTwo from "./ContentTwo.js"
 import Header from "./Header.js"
 import "./Cards.css";
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 function Home() {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true); 
     const fetchApi = () => {
-        fetch("https://api.jsonbin.io/b/609ac8db1a02f86e1f0998fa", {
-            headers: {
-            "secret-key": "$2b$10$mLJ/ZZQcwSmRR0.XSy4vTuc2xZY/pKBtWJyaneLlLfJTv8MIVx0xa"
-            }
-        }
-        )
+        fetch("https://content.guardianapis.com/search?api-key=e59054b6-4cd2-4e33-8805-7fc6efe12221")
             .then((response) => 
                 response.json()
                 )
@@ -27,7 +25,7 @@ function Home() {
 
     useEffect(() => {
     fetchApi();
-  });
+  }, []);
 
     return (
         <React.Fragment>
@@ -36,10 +34,16 @@ function Home() {
             {!loading ? (
                 news.map((news) => {
                     return (
-                    <div>
-                            <Cards><Content key={news.id} news={news} /></Cards>
-                            <Cards><ContentTwo key={news.id} news={news} /></Cards>
-                        </div>
+                        <Container>
+                            <Row> <Col md> <Cards><Content key={news.id} news={news} /></Cards> </Col>
+                                  <Col md> <Cards><Content key={news.id} news={news} /></Cards> </Col></Row>
+                            
+                                 <Row><Col><Cards><ContentTwo key={news.id} news={news} /></Cards></Col>
+                                 <Col><Cards><ContentTwo key={news.id} news={news} /></Cards></Col>
+                                 <Col><Cards><ContentTwo key={news.id} news={news} /></Cards></Col></Row>
+  
+                        </Container>
+                     
                     )
                 })
             ) : (

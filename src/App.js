@@ -3,6 +3,7 @@ import './App.css';
 import Home from "./Components/Home.js";
 import Chat from "./Components/Chat.js";
 import NavBar from "./Components/NavBar.js";
+import More from "./Components/More.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,7 +22,8 @@ function App() {
             </Route>
             <Route exact path="/chat">
             <Chat />
-            </Route>
+          </Route>
+          <Route exact path="/more/:id" children={<More />} />
         </Switch>
       </div>
       </Router>

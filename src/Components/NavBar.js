@@ -11,7 +11,7 @@ import "./Cards.css";
        <Navbar.Collapse id="basic-navbar-nav">
        <Nav className="mr-auto">
               <Nav.Link><Link to="/">Home</Link></Nav.Link> 
-              <Nav.Link><Link to="/chat">Chat</Link></Nav.Link>
+             <Nav.Link><Link to="/chat">Chat</Link></Nav.Link>
     </Nav>
   </Navbar.Collapse>
 </Navbar>
