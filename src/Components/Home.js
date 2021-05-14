@@ -37,13 +37,7 @@ function Home() {
                         <Container>
                             <Row> <Col md> <Cards><Content key={news.id} news={news} /></Cards> </Col>
                                   <Col md> <Cards><Content key={news.id} news={news} /></Cards> </Col></Row>
-                            
-                                 <Row><Col><Cards><ContentTwo key={news.id} news={news} /></Cards></Col>
-                                 <Col><Cards><ContentTwo key={news.id} news={news} /></Cards></Col>
-                                 <Col><Cards><ContentTwo key={news.id} news={news} /></Cards></Col></Row>
-  
                         </Container>
-                     
                     )
                 })
             ) : (
