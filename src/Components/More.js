@@ -1,4 +1,5 @@
 import React from 'react'
+import Cards from "./Cards.js"
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,10 +10,10 @@ import {
 
 
 function More(props) {
-    let { id } = useParams();
+    let { webTitle } = useParams();
     return (
-        <div>
-            <p>{id}</p>
+        <div><Cards>
+            <p>{webTitle}</p></Cards>
         </div>
     )
 }

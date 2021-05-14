@@ -35,8 +35,7 @@ function Home() {
                 news.map((news) => {
                     return (
                         <Container>
-                            <Row> <Col md> <Cards><Content key={news.id} news={news} /></Cards> </Col>
-                                  <Col md> <Cards><Content key={news.id} news={news} /></Cards> </Col></Row>
+                            <Row> <Col md> <Cards><Content key={news.id} news={news} /></Cards> </Col></Row>
                         </Container>
                     )
                 })
