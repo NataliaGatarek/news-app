@@ -14,7 +14,7 @@ import {
 function App() {
   return (
     <Router>
-      <div >
+      <div style={{ backgroundColor: "lightgray"}}>
         <NavBar/>
         <Switch>
           <Route exact path="/">

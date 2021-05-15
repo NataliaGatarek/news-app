@@ -12,7 +12,7 @@ import {
 function More(props) {
     let { webTitle } = useParams();
     return (
-        <div><Cards>
+        <div className="flex-cards"><Cards>
             <p>{webTitle}</p></Cards>
         </div>
     )

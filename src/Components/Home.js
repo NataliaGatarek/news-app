@@ -4,9 +4,7 @@ import Cards from "./Cards.js"
 import ContentTwo from "./ContentTwo.js"
 import Header from "./Header.js"
 import "./Cards.css";
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import TimeDate from "./TimeDate.js"
 
 function Home() {
     const [news, setNews] = useState([]);
@@ -29,14 +27,15 @@ function Home() {
 
     return (
         <React.Fragment>
-        <Header/>
+             <TimeDate/>
+            <Header />
         <div className="flex-cards">
             {!loading ? (
                 news.map((news) => {
                     return (
-                        <Container>
-                            <Row> <Col md> <Cards><Content key={news.id} news={news} /></Cards> </Col></Row>
-                        </Container>
+                       
+                           <Cards><Content key={news.id} news={news} /></Cards> 
+                      
                     )
                 })
             ) : (
