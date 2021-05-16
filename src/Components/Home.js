@@ -35,7 +35,6 @@ function Home() {
                     return (
                        
                            <Cards><Content key={news.id} news={news} /></Cards> 
-                      
                     )
                 })
             ) : (

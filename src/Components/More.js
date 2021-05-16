@@ -8,7 +8,6 @@ import {
   useParams,
 } from "react-router-dom";
 
-
 function More(props) {
     let { webTitle } = useParams();
     return (
