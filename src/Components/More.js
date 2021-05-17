@@ -36,7 +36,7 @@ function More(props) {
              more.map((more) => {
                     return (
                        <div className="flex-cards" key={more.id}><Cards>
-                       <p>{sectionId}</p></Cards>
+                            <p>{sectionId}</p><p>{more.webTitle}</p></Cards>
                        </div> 
                       )})
         }

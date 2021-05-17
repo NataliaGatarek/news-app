@@ -7,7 +7,8 @@ import TimeDate from "./TimeDate.js"
 
 function Home() {
     const [news, setNews] = useState([]);
-    const [loading, setLoading] = useState(true); 
+    const [loading, setLoading] = useState(true);
+    const [searchBaner, setSearchBaner] = useState('');
     const fetchApi = () => {
         fetch("https://content.guardianapis.com/search?api-key=e59054b6-4cd2-4e33-8805-7fc6efe12221")
             .then((response) => 
@@ -32,9 +33,15 @@ function Home() {
         <React.Fragment>
              <TimeDate/>
             <Header />
-        <div className="flex-cards">
-            {!loading ? (
-                news.map((news) => {
+             <input type="text" className = "input-news" placeholder="search news" onChange={event => { setSearchBaner(event.target.value) }}/>
+            <div className="flex-cards">
+                {!loading ? (
+                    news.filter((news) =>
+                    news.sectionName
+                    .toLowerCase()
+                            .includes(searchBaner.toLowerCase())
+                    )
+                .map((news) => {
                     return (
                        
                            <Cards><Content key={news.id} news={news} /></Cards> 

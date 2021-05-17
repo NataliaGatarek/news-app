@@ -13,3 +13,14 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.input-news {
+  margin-bottom: 5px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.photo-placeholder {
+  border: 1px solid lightcoral;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px #333333;
+}

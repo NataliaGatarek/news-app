@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import More from "./More.js";
+
 
 function Content(props) {
     console.log(props);

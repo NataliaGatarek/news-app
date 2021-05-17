@@ -10,7 +10,7 @@ function Cards(props) {
            <Card.Body>
            <Card.Text><div>{props.children}</div>
                     </Card.Text>
-        <PhotoPlaceholder width={200} height={100} grayscale />
+        <PhotoPlaceholder className="photo-placeholder" width={200} height={100} grayscale />
          </Card.Body>
                 </Card>
         </div>
