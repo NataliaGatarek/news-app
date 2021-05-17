@@ -9,19 +9,25 @@ import {
 } from "react-router-dom";
 
 function More(props) {
-    const { webTitle } = useParams();
+    const { sectionId } = useParams();
     const [more, setMore] = useState([]);
 
-    useEffect(() => {
-        const fetchMore = () => {
-            fetch(`http://content.guardianapis.com/tags=${webTitle}?api-key=e59054b6-4cd2-4e33-8805-7fc6efe12221`)
+ const fetchMore = () => {
+            fetch(`http://content.guardianapis.com/tags?section=${sectionId}&api-key=e59054b6-4cd2-4e33-8805-7fc6efe12221`)
                 .then((response) =>
                     response.json()
                 )
                 .then((data) => {
+                    console.log(data);
                     setMore(data.response.results);
-                });
+                })
+     .catch ((error) => {
+        console.log(error);
+    });
         }
+
+
+    useEffect(() => {
         fetchMore();
     }, []);
 
@@ -30,7 +36,7 @@ function More(props) {
              more.map((more) => {
                     return (
                        <div className="flex-cards" key={more.id}><Cards>
-                       <p>{webTitle}</p></Cards>
+                       <p>{sectionId}</p></Cards>
                        </div> 
                       )})
         }

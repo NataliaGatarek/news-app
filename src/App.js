@@ -23,7 +23,7 @@ function App() {
             <Route exact path="/chat">
             <Chat />
           </Route>
-          <Route exact path="/more/:webTitle" children={<More />} />
+          <Route exact path="/more/:sectionId" children={<More />} />
         </Switch>
       </div>
       </Router>

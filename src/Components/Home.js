@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Content from "./Content.js"
 import Cards from "./Cards.js"
-import ContentTwo from "./ContentTwo.js"
 import Header from "./Header.js"
 import "./Cards.css";
 import TimeDate from "./TimeDate.js"
@@ -18,8 +17,12 @@ function Home() {
             .then((data) => {
                 setNews(data.response.results);
                 setLoading(false);
-            });
-    }
+            })
+             .catch ((error) => {
+        console.log(error);
+    });
+};
+
 
     useEffect(() => {
     fetchApi();
