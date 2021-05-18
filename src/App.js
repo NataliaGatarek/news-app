@@ -4,6 +4,7 @@ import Home from "./Components/Home.js";
 import Chat from "./Components/Chat.js";
 import NavBar from "./Components/NavBar.js";
 import More from "./Components/More.js";
+import { NewsContextProvider } from "./context/NewsContext.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,6 +14,7 @@ import {
 
 function App() {
   return (
+    <NewsContextProvider>
     <Router>
       <div style={{ backgroundColor: "lightgray"}}>
         <NavBar/>
@@ -27,6 +29,7 @@ function App() {
         </Switch>
       </div>
       </Router>
+      </NewsContextProvider>
   );
 }
 
