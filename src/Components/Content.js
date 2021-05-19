@@ -7,7 +7,9 @@ function Content(props) {
     return (
         <div>
             <h5> {props.news.sectionName}</h5>
-             <p>{props.news.pillarName}</p>
+            <hr/>
+            <p>{props.news.pillarName}</p>
+            <p>{props.news.webPublicationDate}</p>
             <Link to={`more/${props.news.sectionId}`}><p><strong>...</strong></p></Link>
         </div>
     )

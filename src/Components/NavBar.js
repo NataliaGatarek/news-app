@@ -10,7 +10,7 @@ function NavBar() {
   const { searchBaner, setSearchBaner } = useContext(NewsContext);
      return (
        <Navbar bg="dark" expand="lg">
-       <input type="text" className="input-news" placeholder="search news" onChange={event => { setSearchBaner(event.target.value) }} />
+       <input type="text" className="input-news" placeholder="search news" onChange={(event) => { setSearchBaner(event.target.value) }} />
        <Navbar.Toggle aria-controls="basic-navbar-nav" />
        <Navbar.Collapse id="basic-navbar-nav">
            <Nav className="mr-auto">
