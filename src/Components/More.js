@@ -26,7 +26,6 @@ function More(props) {
     });
         }
 
-
     useEffect(() => {
         fetchMore();
     }, []);
