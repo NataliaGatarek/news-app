@@ -30,7 +30,6 @@ function Home() {
         <React.Fragment>
              <TimeDate/>
             <Header />
-             <input type="text" className = "input-news" placeholder="search news" onChange={event => { setSearchBaner(event.target.value) }}/>
              <div className="flex-cards">
                 {!loading ? (
                     news.filter((news) =>
