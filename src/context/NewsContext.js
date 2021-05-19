@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 const initNewsContext = {
     news:[],
     loading: true,
-    searchBarner: "",
+    searchBaner: "",
 };
 export const NewsContext = createContext(initNewsContext);
 
