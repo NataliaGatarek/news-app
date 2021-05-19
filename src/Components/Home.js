@@ -7,11 +7,11 @@ import TimeDate from "./TimeDate.js"
 import {NewsContext} from "../context/NewsContext.js";
 
 function Home() {
-    const { news, setNews, loading, setLoading } = useContext(NewsContext);
+    const { news, setNews, loading, setLoading, searchBaner, setSearchBaner } = useContext(NewsContext);
     console.log(`news`, news);
     //const [news, setNews] = useState([]);
     //const [loading, setLoading] = useState(true);
-    const [searchBaner, setSearchBaner] = useState('');
+    //const [searchBaner, setSearchBaner] = useState('');
     const fetchApi = async () => {
         try {
             const response = await fetch("https://content.guardianapis.com/search?api-key=e59054b6-4cd2-4e33-8805-7fc6efe12221");

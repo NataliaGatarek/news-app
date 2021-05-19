@@ -18,6 +18,7 @@
   display: block;
   margin-right: auto;
   margin-left: auto;
+  float: right;
 }
 .photo-placeholder {
   border: 1px solid lightcoral;
