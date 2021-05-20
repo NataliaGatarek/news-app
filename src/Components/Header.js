@@ -1,12 +1,14 @@
 import React from 'react'
 import "./Cards.css";
+import TimeDate from "./TimeDate.js"
 
 function Header() {
 
     return (
         <div className="header-cont">
-            <h1>News</h1>
-            <h2>online</h2>
+             <TimeDate/>
+            <h1 className="news">News</h1>
+            <h4>online</h4>
         </div>
     )
 }

@@ -3,11 +3,10 @@ import Content from "./Content.js"
 import Cards from "./Cards.js"
 import Header from "./Header.js"
 import "./Cards.css";
-import TimeDate from "./TimeDate.js"
 import {NewsContext} from "../context/NewsContext.js";
 
 function Home() {
-    const { news, setNews, loading, setLoading, searchBaner, setSearchBaner } = useContext(NewsContext);
+    const { news, setNews, loading, setLoading, searchBaner, setSearchBaner} = useContext(NewsContext);
     console.log(`news`, news);
     //const [news, setNews] = useState([]);
     //const [loading, setLoading] = useState(true);
@@ -28,12 +27,11 @@ function Home() {
 
     return (
         <React.Fragment>
-             <TimeDate/>
             <Header />
              <div className="flex-cards">
                 {!loading ? (
                     news.filter((news) =>
-                    news.sectionName
+                        news.sectionName
                     .toLowerCase()
                     .includes(searchBaner.toLowerCase())
                    )

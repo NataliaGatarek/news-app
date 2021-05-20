@@ -3,12 +3,22 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-bottom: 3px;
+  margin-top: 3px;
 }
 .header-cont {
   text-align: center;
+  font-family: "Newsreader", serif;
+  font-size: 18px;
 }
+.news {
+  font-size: 55px;
+  font-weight: bolder;
+}
+
 .photo-placeholder {
   border: 1px solid lightcoral;
   border-radius: 5px;
   box-shadow: 1px 1px 3px #333333;
 }
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,300;1,500&display=swap");

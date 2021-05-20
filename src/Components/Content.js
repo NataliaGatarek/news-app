@@ -9,7 +9,7 @@ function Content(props) {
             <h5> {props.news.sectionName}</h5>
             <hr/>
             <p>{props.news.pillarName}</p>
-            <p>{props.news.webPublicationDate}</p>
+            <p>Date: {props.news.webPublicationDate}</p>
             <Link to={`more/${props.news.sectionId}`}><p><strong>...</strong></p></Link>
         </div>
     )

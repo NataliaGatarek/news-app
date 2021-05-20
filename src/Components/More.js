@@ -1,5 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react'
-import Cards from "./Cards.js"
+import React, { useEffect, useState, useContext } from 'react';
+import Cards from "./Cards.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {NewsContext} from "../context/NewsContext.js";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,9 +11,11 @@ import {
   useParams,
 } from "react-router-dom";
 
+
 function More(props) {
+    const { more, setMore, baner, searchBaner, loading, setLoading} = useContext(NewsContext);
     const { sectionId } = useParams();
-    const [more, setMore] = useState([]);
+   // const [more, setMore] = useState([]);
     
 
 const fetchMore = async () => {
@@ -27,14 +32,22 @@ const fetchMore = async () => {
   }, []);
 
     return (
-        <div>{
-             more.map((more) => {
-                    return (
-                       <div className="flex-cards" key={more.id}><Cards>
-                            <p>{sectionId}</p> <hr/><p>{more.webTitle}</p><p><a href={more.webUrl} target="_blank">Click here to read more</a></p></Cards>
-                       </div> 
+      <div>
+         {!loading ? (
+                  more.filter((more) =>
+                   more.webTitle
+                  .toLowerCase()
+                  .includes(searchBaner.toLowerCase())
+          )
+          .map((more) => {
+               return (
+                        <div key={more.id} className="flex-cards"><Cards>
+                            <h5>{sectionId}</h5> <hr/><p>{more.webTitle}</p><p><a href={more.webUrl} target="_blank">Click here to read more</a></p></Cards>
+                       </div>
                       )})
-        }
+            ) : (
+                <p>loading..</p>
+            )}
         </div>
 )}
 export default More;
