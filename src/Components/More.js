@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Cards from "./Cards.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {NewsContext} from "../context/NewsContext.js";
