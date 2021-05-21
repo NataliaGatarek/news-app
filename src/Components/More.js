@@ -1,8 +1,9 @@
 import React, { useEffect, useContext } from 'react';
 import Cards from "./Cards.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {NewsContext} from "../context/NewsContext.js";
-
+import { NewsContext } from "../context/NewsContext.js";
+import BackButton from "./BackButton.js";
+import "./Cards.css";
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,7 +33,9 @@ const fetchMore = async () => {
   }, []);
 
     return (
-      <div>
+      <React.Fragment>
+      <BackButton/>
+        <div className="flex-cards">
          {!loading ? (
                   more.filter((more) =>
                    more.webTitle
@@ -40,14 +43,19 @@ const fetchMore = async () => {
                   .includes(searchBaner.toLowerCase())
           )
           .map((more) => {
-               return (
-                        <div key={more.id} className="flex-cards"><Cards>
-                            <h5>{sectionId}</h5> <hr/><p>{more.webTitle}</p><p><a href={more.webUrl} target="_blank">Click here to read more</a></p></Cards>
-                       </div>
+            return (
+                    <Cards>
+                      <div key={more.id}>
+                      <h5>{sectionId}</h5>
+                      <hr /><p>{more.webTitle}</p>
+                      <p><a href={more.webUrl} target="_blank">Click here to read more</a></p>
+                      </div>
+                    </Cards>
                       )})
             ) : (
                 <p>loading..</p>
-            )}
-        </div>
+          )}
+          </div>
+        </React.Fragment>
 )}
 export default More;

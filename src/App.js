@@ -16,7 +16,7 @@ function App() {
   return (
     <NewsContextProvider>
     <Router>
-      <div style={{ backgroundColor: "lightgray"}}>
+      <div style={{ backgroundColor: "lightgray", minHeight:"100vh", height: "100%"}}>
         <NavBar/>
         <Switch>
           <Route exact path="/">
