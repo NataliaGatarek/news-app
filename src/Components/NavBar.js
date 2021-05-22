@@ -15,7 +15,7 @@ function NavBar() {
           <Navbar.Collapse id="basic-navbar-nav">
            <Nav className="mr-auto header-cont">
               <Nav.Link><Link to="/">Home</Link></Nav.Link> 
-             <Nav.Link><Link to="/chat">Chat</Link></Nav.Link>
+             <Nav.Link><Link to="/login">Log In</Link></Nav.Link>
     </Nav>
   </Navbar.Collapse>
 </Navbar>

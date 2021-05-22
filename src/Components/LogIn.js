@@ -1,10 +1,10 @@
 import React from 'react'
 
- function Chat() {
+ function LogIn() {
     return (
         <div>
             <p>chat</p>
         </div>
     )
 }
-export default Chat;
+export default LogIn;

@@ -1,7 +1,7 @@
 
 import './App.css';
 import Home from "./Components/Home.js";
-import Chat from "./Components/Chat.js";
+import Chat from "./Components/LogIn.js";
 import NavBar from "./Components/NavBar.js";
 import More from "./Components/More.js";
 import { NewsContextProvider } from "./context/NewsContext.js";
@@ -22,7 +22,7 @@ function App() {
           <Route exact path="/">
             <Home />
             </Route>
-            <Route exact path="/chat">
+            <Route exact path="/login">
             <Chat />
           </Route>
           <Route exact path="/more/:sectionId" children={<More />} />
