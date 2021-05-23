@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import LogComp from "./LogComp.js";
 
  function LogIn() {
     return (
         <div>
-            <p>chat</p>
+            <LogComp/>
         </div>
     )
 }
