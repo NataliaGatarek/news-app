@@ -9,7 +9,6 @@ function LogComp(props) {
     setLogging(prevState => ({
       ...prevState,
       [name]: value
-
     })
     );
   };
