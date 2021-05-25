@@ -5,8 +5,10 @@ import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BackButton from "./BackButton.js";
 import firebase from "../firebaseConfig.js";
+import { useHistory } from "react-router-dom";
 
 function Register() {
+  let history = useHistory();
   const db = firebase.firestore();
   const [state, setState] = useState({ email: "", password: "", name: "" });
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(LogoContext);
@@ -21,6 +23,7 @@ function Register() {
         // Signed in
         var user = userCredential.user;
         console.log(user);
+        history.push('/login');
         db.collection("users")
           .doc(user.uid)
           .set({
