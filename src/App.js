@@ -1,21 +1,25 @@
 
+import React, { useContext } from "react";
 import './App.css';
 import Home from "./Components/Home.js";
-import LogIn from "./Components/LogIn.js";
+import LogComp from "./Components/LogComp.js";
 import NavBar from "./Components/NavBar.js";
 import More from "./Components/More.js";
 import Register from "./Components/Register.js"
 import { NewsContextProvider } from "./context/NewsContext.js";
 import { LogoContextProvider } from "./context/LogoContext.js";
+import { LogoContext } from "./context/LogoContext.js";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 
 function App() {
+  const {isLoggedIn} = useContext(LogoContext);
   return (
     <NewsContextProvider>
        <LogoContextProvider>
@@ -26,9 +30,9 @@ function App() {
         <Route exact path="/">
         <Home />
         </Route>
-                <Route exact path="/login">
-                <LogIn />
-                </Route>
+              <Route exact path="/login">
+                {isLoggedIn ? <Redirect to="/" /> : <LogComp />}
+              </Route>
             <Route exact path="/register">
             <Register/>
             </Route>

@@ -1,28 +1,67 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState} from 'react';
 import "./Cards.css";
 import { LogoContext } from "../context/LogoContext.js";
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BackButton from "./BackButton.js";
+import firebase from "../firebaseConfig.js";
 
 function Register() {
-    const { registering, setRegistering } = useContext(LogoContext);
-    const Flover = (event) => {
-    const { name, value } = event.target;
-    setRegistering(prevState => ({
-      ...prevState,
-      [name]: value
-    })
-    );
+  const db = firebase.firestore();
+  const [state, setState] = useState({ email: "", password: "", name: "" });
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(LogoContext);
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+   const register = () => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(state.email, state.password)
+      .then((userCredential) => {
+        // Signed in
+        var user = userCredential.user;
+        console.log(user);
+        db.collection("users")
+          .doc(user.uid)
+          .set({
+            name: state.name,
+            email: state.email,
+          })
+          .then(() => {
+            db.collection("users")
+              .doc(user.uid)
+              .get()
+              .then((doc) => {
+                console.log(doc.data());
+              });
+          })
+          .catch((error) => {
+            console.error("Error writing document: ", error);
+          });
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage);
+        setUser(null);
+        setIsLoggedIn(false);
+        // ..
+      });
+  };
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+  register();
   };
     return (
         <div className="LogIn header-cont">
-            <p>registration</p>
-            <Form action="">
-              <label><input type="text" placeholder="username" name="username" value={registering.username} onChange={Flover} /></label> 
-              <label><input type="text" placeholder="email" name="email" value={registering.email} onChange={Flover} /></label> 
-              <label><input type="text" placeholder="password" name="password" value={registering.password} onChange={Flover} /></label> 
+            <h1>Register yourself</h1>
+            <Form onSubmit={handleOnSubmit}>
+              <label><input type="text" placeholder="name" name="name" value={state.name} onChange={handleChange} /></label> 
+              <label><input type="email" placeholder="email" name="email" value={state.email} onChange={handleChange} /></label> 
+              <label><input type="password" placeholder="password" name="password" value={state.password} onChange={handleChange} /></label> <br></br>
              <button type="submit">Submit</button>
-            </Form>
+        </Form><br></br>
+        <BackButton/>
         </div>
     )
 }

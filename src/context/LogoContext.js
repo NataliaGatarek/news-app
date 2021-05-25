@@ -1,15 +1,15 @@
 import React, { createContext, useState } from "react";
 const initLogoContext = {
-    logging: { username: "", password: "" },
-    registering: {username: "", email:"", password:""}
+    user: null,
+    isLoggedIn: false,
 };
 export const LogoContext = createContext(initLogoContext);
 
 export const LogoContextProvider = ({children}) => {
-    const [logging, setLogging] = useState(initLogoContext.logging);
-    const [registering, setRegistering] = useState(initLogoContext.registering);
+    const [user, setUser] = useState(initLogoContext.user);
+    const [isLoggedIn, setIsLoggedIn] = useState(initLogoContext.isLoggedIn);
 
     return (
-        <LogoContext.Provider value={{ logging, setLogging, registering, setRegistering}}>{children}</LogoContext.Provider>
+        <LogoContext.Provider value={{ user,setUser,isLoggedIn,setIsLoggedIn,}}>{children}</LogoContext.Provider>
     )
 };
