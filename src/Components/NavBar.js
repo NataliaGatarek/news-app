@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Cards.css";
 import { NewsContext } from "../context/NewsContext.js";
 import { LogoContext } from "../context/LogoContext.js";
+import Button from 'react-bootstrap/Button';
 
 
 function NavBar() {
@@ -20,7 +21,7 @@ function NavBar() {
              <Nav.Link><Link to="/login">Log In</Link></Nav.Link>
              <p>
             {isLoggedIn ? (
-              <button onClick={() => setIsLoggedIn(false)} >leave</button>
+              <Button variant="outline-light" onClick={() => setIsLoggedIn(false)} >Leave</Button>
             ) : (
               ""
             )}

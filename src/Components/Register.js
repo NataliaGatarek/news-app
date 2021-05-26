@@ -29,6 +29,7 @@ function Register() {
           .set({
             name: state.name,
             email: state.email,
+            password:state.password,
           })
           .then(() => {
             db.collection("users")

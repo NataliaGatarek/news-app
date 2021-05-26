@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, useHistory } from "react-router-dom";
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Cards.css";
 

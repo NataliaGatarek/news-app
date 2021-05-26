@@ -14,7 +14,6 @@ import {
   Switch,
   Route,
   Link,
-  Redirect
 } from "react-router-dom";
 
 
@@ -31,7 +30,7 @@ function App() {
         <Home />
         </Route>
               <Route exact path="/login">
-                {isLoggedIn ? <Redirect to="/" /> : <LogComp />}
+                <LogComp />
               </Route>
             <Route exact path="/register">
             <Register/>
