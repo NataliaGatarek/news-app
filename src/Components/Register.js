@@ -20,23 +20,30 @@ function Register() {
       .auth()
       .createUserWithEmailAndPassword(state.email, state.password)
       .then((userCredential) => {
-        // Signed in
         var user = userCredential.user;
         console.log(user);
-        history.push('/login');
+        setIsLoggedIn(true);
+        history.push('/');
         db.collection("users")
           .doc(user.uid)
           .set({
             name: state.name,
             email: state.email,
-            password:state.password,
+            password: state.password,
+            favorites: [],
           })
           .then(() => {
             db.collection("users")
               .doc(user.uid)
               .get()
               .then((doc) => {
+                const newUser = doc.data();
                 console.log(doc.data());
+                newUser.uid = user.uid;
+                setUser(newUser);
+              })
+            .catch((error) => {
+                console.log(error);
               });
           })
           .catch((error) => {
