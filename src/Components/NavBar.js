@@ -18,14 +18,6 @@ function NavBar() {
           <Navbar.Collapse id="basic-navbar-nav">
            <Nav className="mr-auto header-cont">
               <Nav.Link><Link to="/">Home</Link></Nav.Link> 
-             <Nav.Link><Link to="/login">Log In</Link></Nav.Link>
-             <p>
-            {isLoggedIn ? (
-              <Button variant="outline-light" onClick={() => setIsLoggedIn(false)} >Leave</Button>
-            ) : (
-              ""
-            )}
-          </p>
     </Nav>
   </Navbar.Collapse>
 </Navbar>
