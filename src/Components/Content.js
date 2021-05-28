@@ -10,52 +10,8 @@ function Content(props) {
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(LogoContext);
   const [favorites, setFavorites] = useState([]);
   const [color, setColor] = useState("transparent");
-  const getFav = () => {
-    if (user) {
-      db.collection("users")
-        .doc(user.uid)
-        .get()
-        .then((doc) => {
-          if (doc.exists) {
-            console.log("Document data:", doc.data());
-            const favorites = doc.data().favorites;
-            setFavorites(favorites);
-          } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-          }
-        })
-        .catch((error) => {
-          console.log("Error getting document:", error);
-        });
-    }
-  };
-  const addFavorite = () => {
-    var userDocument = db.collection("users").doc(user.uid);
-    userDocument
-      .update({
-        favorites: firebase.firestore.FieldValue.arrayUnion(props.news),
-      })
-      .then(() => {
-        console.log("Document successfully updated!");
-        getFav();
-      })
-      .catch((error) => {
-        console.error("Error updating document: ", error);
-      });
-  };
-  const checkIfFav = () => {
-    favorites.map((favorite) => {
-      if (favorite.id === props.news.id) {
-        console.log("equal");
-        setColor("red");
-      }
-    });
-  };
-  useEffect(() => {
-    getFav();
-    checkIfFav();
-  }, [favorites]);
+  const favorite = props.favorite;
+
   console.log(isLoggedIn);
   return (
     <div>
@@ -63,8 +19,8 @@ function Content(props) {
       <p>{color}</p>
       {isLoggedIn ? (
         <button
-          onClick={() => addFavorite()}
-          style={{ backgroundColor: color }}
+          onClick={() => props.addFavorite(props.news)}
+          style={{ backgroundColor: favorite ? "red" : "transparent" }}
         >
           <GrFavorite />
         </button>
