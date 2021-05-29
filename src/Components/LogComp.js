@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./Cards.css";
 import { LogoContext } from "../context/LogoContext.js";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
 import firebase from "../firebaseConfig.js";
 import {
   BrowserRouter as Router,
@@ -30,7 +30,7 @@ function LogComp() {
         var user = userCredential.user;
         setUser(user);
         setIsLoggedIn(true);
-        history.push('/');
+        history.push("/");
         // ...
       })
       .catch((error) => {
@@ -45,26 +45,43 @@ function LogComp() {
     login();
   };
   return (
-   <div className="LogIn header-cont">
-        <h1>Please Log In</h1>
-        <Form onSubmit={handleOnSubmit}>
+    <div className="LogIn header-cont">
+      <h1>Please Log In</h1>
+      <Form onSubmit={handleOnSubmit}>
         <label>
           <p>Email</p>
-            <input type="text" placeholder="email" name="email" value={state.email} onChange={handleChange} />
+          <input
+            type="text"
+            placeholder="email"
+            name="email"
+            value={state.email}
+            onChange={handleChange}
+          />
         </label>
         <label>
           <p>Password</p>
-          <input type="password" placeholder="password" name="password" value={state.password} onChange={handleChange} />
+          <input
+            type="password"
+            placeholder="password"
+            name="password"
+            value={state.password}
+            onChange={handleChange}
+          />
         </label>
-            <div>
-           <button type="submit">Submit</button>
+        <div>
+          <Button variant="outline-dark" type="submit">
+            Submit
+          </Button>
         </div>
       </Form>
       <br></br>
-      <h4>You can also register and receive the newest updates</h4>
-      <Link to="/register"><Button variant="outline-dark">Register</Button> </Link>
-        </div>
-   
-       )
+      <h4 style={{ margin: "3px" }}>
+        You can also register and save favorite articles
+      </h4>
+      <Link to="/register">
+        <Button variant="outline-dark">Register</Button>{" "}
+      </Link>
+    </div>
+  );
 }
 export default LogComp;

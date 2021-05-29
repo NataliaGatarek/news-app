@@ -5,25 +5,24 @@ import firebase from "../firebaseConfig.js";
 import { LogoContext } from "../context/LogoContext.js";
 
 function Content(props) {
-  console.log(props);
   const db = firebase.firestore();
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(LogoContext);
   const [favorites, setFavorites] = useState([]);
-  const [color, setColor] = useState("transparent");
   const favorite = props.favorite;
 
-  console.log(isLoggedIn);
   return (
     <div>
       <h6> {props.news.sectionName}</h6>
-      <p>{color}</p>
       {isLoggedIn ? (
-        <button
-          onClick={() => props.addFavorite(props.news)}
-          style={{ backgroundColor: favorite ? "red" : "transparent" }}
-        >
-          <GrFavorite />
-        </button>
+        <div style={{ textAlign: "right" }}>
+          {" "}
+          <button
+            onClick={() => props.addFavorite(props.news, favorite)}
+            style={{ backgroundColor: favorite ? "red" : "transparent" }}
+          >
+            <GrFavorite />
+          </button>{" "}
+        </div>
       ) : (
         ""
       )}

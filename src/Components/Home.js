@@ -62,19 +62,33 @@ function Home() {
       return true;
     }
   };
-  const addFavorite = (news) => {
+  const AddFavorite = (news, favorite) => {
     var userDocument = db.collection("users").doc(user.uid);
-    userDocument
-      .update({
-        favorites: firebase.firestore.FieldValue.arrayUnion(news),
-      })
-      .then(() => {
-        console.log("Document successfully updated!");
-        getFav();
-      })
-      .catch((error) => {
-        console.error("Error updating document: ", error);
-      });
+    if (favorite) {
+      userDocument
+        .update({
+          favorites: firebase.firestore.FieldValue.arrayRemove(news),
+        })
+        .then(() => {
+          console.log("removed", news);
+          getFav();
+        })
+        .catch((error) => {
+          console.error("Error updating document: ", error);
+        });
+    } else {
+      userDocument
+        .update({
+          favorites: firebase.firestore.FieldValue.arrayUnion(news),
+        })
+        .then(() => {
+          console.log("added");
+          getFav();
+        })
+        .catch((error) => {
+          console.error("Error updating document: ", error);
+        });
+    }
   };
   return (
     <React.Fragment>
@@ -89,7 +103,7 @@ function Home() {
               return (
                 <Cards>
                   <Content
-                    addFavorite={addFavorite}
+                    addFavorite={AddFavorite}
                     favorite={checkIfFav(news)}
                     key={news.id}
                     news={news}
