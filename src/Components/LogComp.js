@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./Cards.css";
 import { LogoContext } from "../context/LogoContext.js";
@@ -17,6 +17,7 @@ import {
 function LogComp() {
   let history = useHistory();
   const [state, setState] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(LogoContext);
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -29,6 +30,7 @@ function LogComp() {
         var user = userCredential.user;
         setUser(user);
         setIsLoggedIn(true);
+        setError(``);
         history.push("/");
       })
       .catch((error) => {
@@ -36,15 +38,25 @@ function LogComp() {
         var errorMessage = error.message;
         setUser(null);
         setIsLoggedIn(false);
+        setError(`Something went wrong, plese try to log in again`);
       });
   };
   const handleOnSubmit = (event) => {
     event.preventDefault();
     login();
   };
+  useEffect(() => {
+    return firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log("user is logged");
+      }
+    });
+  }, []);
+
   return (
     <div className="LogIn header-cont">
       <h1>Please Log In</h1>
+      {error && <h3 style={{ color: "red" }}>{error}</h3>}
       <Form onSubmit={handleOnSubmit}>
         <label>
           <p>Email</p>
