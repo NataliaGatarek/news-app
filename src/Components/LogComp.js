@@ -26,12 +26,10 @@ function LogComp() {
       .auth()
       .signInWithEmailAndPassword(state.email, state.password)
       .then((userCredential) => {
-        // Signed in
         var user = userCredential.user;
         setUser(user);
         setIsLoggedIn(true);
         history.push("/");
-        // ...
       })
       .catch((error) => {
         var errorCode = error.code;
