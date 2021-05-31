@@ -47,14 +47,6 @@ function LogComp() {
     event.preventDefault();
     login();
   };
-  // useEffect(() => {
-  //  return firebase.auth().onAuthStateChanged((user) => {
-  //   if (user) {
-  //    console.log("user is logged");
-  //  }
-  // });
-  // }, []);
-
   return (
     <div className="LogIn header-cont">
       <h1>Please Log In</h1>
@@ -86,6 +78,10 @@ function LogComp() {
           </Button>
         </div>
       </Form>
+      <br></br>
+      <div>
+        <Link to="/passwordreset">Forgot your password?</Link>
+      </div>
       <br></br>
       <h4 style={{ margin: "3px" }}>
         You can also register and save favorite articles

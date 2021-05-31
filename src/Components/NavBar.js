@@ -27,7 +27,16 @@ function NavBar() {
   useEffect(() => {
     checkIfLoggedIn();
   }, []);
-
+  /*  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser(null);
+      }
+    });
+    return unsubscribe();
+  }, []); */
   const signout = () => {
     firebase
       .auth()
@@ -62,6 +71,7 @@ function NavBar() {
           <Nav.Link>
             <Link to="/">Home</Link>
           </Nav.Link>
+          {user && <p style={{ color: "blue" }}>Welcome {user.email}</p>}
           <p>
             {isLoggedIn ? (
               <Button variant="outline-light" onClick={handleClick}>
