@@ -59,8 +59,6 @@ function Register() {
         setError(errorMessage);
         setUser(null);
         setIsLoggedIn(false);
-        //setError(`An accoutn can not be created, please try again`);
-        // ..
       });
   };
   const handleOnSubmit = (event) => {

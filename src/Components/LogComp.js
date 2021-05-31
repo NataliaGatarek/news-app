@@ -41,7 +41,6 @@ function LogComp() {
         setError(errorMessage);
         setUser(null);
         setIsLoggedIn(false);
-        //setError(`Something went wrong, plese try to log in again`);
       });
   };
   const handleOnSubmit = (event) => {
