@@ -11,7 +11,7 @@ function Register() {
   let history = useHistory();
   const db = firebase.firestore();
   const [state, setState] = useState({ email: "", password: "", name: "" });
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(LogoContext);
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -56,9 +56,10 @@ function Register() {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorMessage);
+        setError(errorMessage);
         setUser(null);
         setIsLoggedIn(false);
-        setError(`An accoutn can not be created, please try again`);
+        //setError(`An accoutn can not be created, please try again`);
         // ..
       });
   };

@@ -17,7 +17,7 @@ import {
 function LogComp() {
   let history = useHistory();
   const [state, setState] = useState({ email: "", password: "" });
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(LogoContext);
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -36,22 +36,25 @@ function LogComp() {
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        setError(errorMessage);
         setUser(null);
         setIsLoggedIn(false);
-        setError(`Something went wrong, plese try to log in again`);
+        //setError(`Something went wrong, plese try to log in again`);
       });
   };
   const handleOnSubmit = (event) => {
     event.preventDefault();
     login();
   };
-  useEffect(() => {
-    return firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        console.log("user is logged");
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //  return firebase.auth().onAuthStateChanged((user) => {
+  //   if (user) {
+  //    console.log("user is logged");
+  //  }
+  // });
+  // }, []);
 
   return (
     <div className="LogIn header-cont">
