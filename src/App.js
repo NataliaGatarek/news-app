@@ -6,6 +6,7 @@ import NavBar from "./Components/NavBar.js";
 import More from "./Components/More.js";
 import PasswordReset from "./Components/PasswordReset.js";
 import Register from "./Components/Register.js";
+import Favorites from "./Components/Favorites.js";
 import { NewsContextProvider } from "./context/NewsContext.js";
 import { LogoContextProvider } from "./context/LogoContext.js";
 import { LogoContext } from "./context/LogoContext.js";
@@ -37,6 +38,9 @@ function App() {
               </Route>
               <Route exact path="/register">
                 <Register />
+              </Route>
+              <Route exact path="/favorites">
+                <Favorites />
               </Route>
               <Route exact path="/more/:sectionId" children={<More />} />
             </Switch>

@@ -71,18 +71,23 @@ function NavBar() {
           <Nav.Link>
             <Link to="/">Home</Link>
           </Nav.Link>
-          {user && <p style={{ color: "blue" }}>Welcome {user.email}</p>}
-          <p>
-            {isLoggedIn ? (
-              <Button variant="outline-light" onClick={handleClick}>
-                Leave
-              </Button>
-            ) : (
-              <Nav.Link>
-                <Link to="/login">Log In</Link>
-              </Nav.Link>
-            )}
-          </p>
+
+          {isLoggedIn ? (
+            <Nav.Link>
+              <Link to="/favorites">Favorites</Link>
+            </Nav.Link>
+          ) : (
+            ""
+          )}
+          {isLoggedIn ? (
+            <Button variant="outline-light" onClick={handleClick}>
+              Leave
+            </Button>
+          ) : (
+            <Nav.Link>
+              <Link to="/login">Log In</Link>
+            </Nav.Link>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
