@@ -60,13 +60,9 @@ function NavBar() {
           <Nav.Link>
             <Link to="/">Home</Link>
           </Nav.Link>
-          {isLoggedIn ? (
-            <Nav.Link>
-              <Link to="/favorites">Favorites</Link>
-            </Nav.Link>
-          ) : (
-            ""
-          )}
+          <Nav.Link>
+            <Link to="/favorites">Favorites</Link>
+          </Nav.Link>
           {isLoggedIn ? (
             <Button variant="outline-light" onClick={handleClick}>
               Leave

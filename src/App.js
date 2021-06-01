@@ -10,6 +10,7 @@ import Favorites from "./Components/Favorites.js";
 import { NewsContextProvider } from "./context/NewsContext.js";
 import { LogoContextProvider } from "./context/LogoContext.js";
 import { LogoContext } from "./context/LogoContext.js";
+import PrivateRoute from "./Components/PrivateRoute.js";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
@@ -39,9 +40,11 @@ function App() {
               <Route exact path="/register">
                 <Register />
               </Route>
-              <Route exact path="/favorites">
-                <Favorites />
-              </Route>
+              <PrivateRoute
+                children={<Favorites />}
+                exact
+                path="/favorites"
+              ></PrivateRoute>
               <Route exact path="/more/:sectionId" children={<More />} />
             </Switch>
           </div>

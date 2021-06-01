@@ -33,7 +33,6 @@ function Favorites() {
         console.log("Error getting document:", error);
       });
   }
-
   if (favs) {
     return favs.map((fav) => {
       return (
@@ -46,7 +45,7 @@ function Favorites() {
           <div>
             <p>{fav.sectionName}</p>
             <p>{fav.type}</p>
-            <p>{fav.apiUrl}</p>
+            <p>{fav.webPublicationDate}</p>
             <hr></hr>
           </div>
         </div>
