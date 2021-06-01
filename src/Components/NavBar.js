@@ -27,16 +27,6 @@ function NavBar() {
   useEffect(() => {
     checkIfLoggedIn();
   }, []);
-  /*  useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        setAuthUser(user);
-      } else {
-        setAuthUser(null);
-      }
-    });
-    return unsubscribe();
-  }, []); */
   const signout = () => {
     firebase
       .auth()
@@ -50,7 +40,6 @@ function NavBar() {
       });
   };
   const handleClick = (event) => {
-    //window.location.reload();
     event.preventDefault();
     signout();
   };
@@ -71,7 +60,6 @@ function NavBar() {
           <Nav.Link>
             <Link to="/">Home</Link>
           </Nav.Link>
-
           {isLoggedIn ? (
             <Nav.Link>
               <Link to="/favorites">Favorites</Link>
