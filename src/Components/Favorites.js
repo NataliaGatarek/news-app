@@ -36,13 +36,8 @@ function Favorites() {
   if (favs) {
     return favs.map((fav) => {
       return (
-        <div
-          key={favs.id}
-          favs={favs}
-          className="flex-cards"
-          style={{ textAlign: "center" }}
-        >
-          <div>
+        <div className="flex-cards" style={{ textAlign: "center" }}>
+          <div key={favs.id} favs={favs}>
             <p>{fav.sectionName}</p>
             <p>{fav.type}</p>
             <p>{fav.webPublicationDate}</p>
