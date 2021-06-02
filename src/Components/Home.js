@@ -20,7 +20,8 @@ function Home() {
   const fetchApi = async () => {
     try {
       const response = await fetch(
-        "https://content.guardianapis.com/search?api-key=e59054b6-4cd2-4e33-8805-7fc6efe12221"
+        "https://content.guardianapis.com/search?api-key=" +
+          process.env.REACT_APP_API_KEY_GUARDIAN
       );
       const data = await response.json();
       setNews(data.response.results);
