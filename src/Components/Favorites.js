@@ -2,12 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Cards.css";
 import { LogoContext } from "../context/LogoContext.js";
+import { NewsContext } from "../context/NewsContext.js";
 import firebase from "../firebaseConfig.js";
 
 function Favorites() {
   const db = firebase.firestore();
   const [favs, setFavs] = useState([]);
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(LogoContext);
+  const { more, setMore, baner, searchBaner, loading, setLoading } =
+    useContext(NewsContext);
 
   useEffect(() => {
     if (user) {
@@ -34,18 +37,22 @@ function Favorites() {
       });
   }
   if (favs) {
-    return favs.map((fav) => {
-      return (
-        <div className="flex-cards" style={{ textAlign: "center" }}>
-          <div key={favs.id} favs={favs}>
-            <p>{fav.sectionName}</p>
-            <p>{fav.type}</p>
-            <p>{fav.webPublicationDate}</p>
-            <hr></hr>
+    return favs
+      .filter((favs) =>
+        favs.sectionName.toLowerCase().includes(searchBaner.toLowerCase())
+      )
+      .map((fav) => {
+        return (
+          <div className="flex-cards" style={{ textAlign: "center" }}>
+            <div key={favs.id} favs={favs}>
+              <p>{fav.sectionName}</p>
+              <p>{fav.type}</p>
+              <p>{fav.webPublicationDate}</p>
+              <hr></hr>
+            </div>
           </div>
-        </div>
-      );
-    });
+        );
+      });
   }
 }
 export default Favorites;
