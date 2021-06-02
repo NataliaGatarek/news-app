@@ -1,6 +1,6 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from "react";
 import Cards from "./Cards.js";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { NewsContext } from "../context/NewsContext.js";
 import BackButton from "./BackButton.js";
 import "./Cards.css";
@@ -12,50 +12,57 @@ import {
   useParams,
 } from "react-router-dom";
 
-
 function More(props) {
-    const { more, setMore, baner, searchBaner, loading, setLoading} = useContext(NewsContext);
-    const { sectionId } = useParams();
-   // const [more, setMore] = useState([]);
-    
+  const { more, setMore, baner, searchBaner, loading, setLoading } =
+    useContext(NewsContext);
+  const { sectionId } = useParams();
+  // const [more, setMore] = useState([]);
 
-const fetchMore = async () => {
-        try {
-            const response = await fetch(`http://content.guardianapis.com/tags?section=${sectionId}&api-key=e59054b6-4cd2-4e33-8805-7fc6efe12221`);
-            const data = await response.json()
-            setMore(data.response.results);
-        } catch (error) {
-            console.log(error);
-        }
+  const fetchMore = async () => {
+    try {
+      const response = await fetch(
+        `https://content.guardianapis.com/tags?section=${sectionId}&api-key=e59054b6-4cd2-4e33-8805-7fc6efe12221`
+      );
+      const data = await response.json();
+      setMore(data.response.results);
+    } catch (error) {
+      console.log(error);
     }
-    useEffect(() => {
+  };
+  useEffect(() => {
     fetchMore();
   }, []);
 
-    return (
-      <React.Fragment>
-      <BackButton/>
-        <div className="flex-cards">
-         {!loading ? (
-                  more.filter((more) =>
-                   more.webTitle
-                  .toLowerCase()
-                  .includes(searchBaner.toLowerCase())
-          )
-          .map((more) => {
-            return (
-                    <Cards>
-                      <div key={more.id}>
-                      <h5>{sectionId}</h5>
-                      <hr /><p>{more.webTitle}</p>
-                      <p><a href={more.webUrl} target="_blank">Click here to read more</a></p>
-                      </div>
-                    </Cards>
-                      )})
-            ) : (
-                <p>loading..</p>
-          )}
-          </div>
-        </React.Fragment>
-)}
+  return (
+    <React.Fragment>
+      <BackButton />
+      <div className="flex-cards">
+        {!loading ? (
+          more
+            .filter((more) =>
+              more.webTitle.toLowerCase().includes(searchBaner.toLowerCase())
+            )
+            .map((more) => {
+              return (
+                <Cards>
+                  <div key={more.id}>
+                    <h5>{sectionId}</h5>
+                    <hr />
+                    <p>{more.webTitle}</p>
+                    <p>
+                      <a href={more.webUrl} target="_blank">
+                        Click here to read more
+                      </a>
+                    </p>
+                  </div>
+                </Cards>
+              );
+            })
+        ) : (
+          <p>loading..</p>
+        )}
+      </div>
+    </React.Fragment>
+  );
+}
 export default More;
